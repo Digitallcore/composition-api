@@ -1,9 +1,10 @@
 <template>
     <div
-      class="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center"
+      class="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center relative"
     >
       <NewsCard v-for="(post, index) in posts" :key="index" :post="post" />
     </div>
+    
   </template>
   
   <script>
@@ -16,7 +17,7 @@
       },
     },
     components: {
-      NewsCard,
+      NewsCard
     },
   }
   </script>

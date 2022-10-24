@@ -27,18 +27,18 @@
   </section>
 </template>
   
-  <script>
-  export default {
-    props: {
-      post: {
-        type: Object,
-        required: true,
-      },
+<script>
+import { useFormatDate } from '@/hooks/useFormatDate';
+export default {
+  props: {
+    post: {
+      type: Object,
+      required: true,
     },
-    methods: {
-      formatDate(strDate) {
-        return new Date(strDate).toLocaleDateString('ru-ru', {year:"numeric", month:"long", day:"numeric"})
-      },
-    },
+  },
+  setup(props){
+    const {formatDate} = useFormatDate()
+    return {formatDate}
   }
-  </script>
+}
+</script>

@@ -23,7 +23,7 @@
             </div>
             <div class="absolute bottom-3 left-4">
                 <p class="mt-2 font-light text-gray-600" @formatDatePage="formatDate">
-                {{ formatDatePage(postPage.datePublish) }}
+                {{ formatDate(postPage.datePublish) }}
                 </p>
             </div>
             <div class="absolute bottom-3 right-4">
@@ -39,29 +39,27 @@ import Header from '@/components/Header.vue'
 import Layout from '@/components/Layout.vue'
 import NewsCard from '@/components/NewsCard.vue'
 import axios from 'axios'
+import { useRoute } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { useFormatDate } from "@/hooks/useFormatDate"
 
 export default{
     components: { Layout, Header, Footer, NewsCard},
-    data(){
-        return {
-            postPage: [],
+    props:{
+        postPage:{
+            type: Array
         }
     },
-    methods:{
-        async fetchNewsPage(){
-            try {
-                const response = await axios.get('https://domotekhnika.ru/api/v1/news/'+this.$route.params.slug)
-                const results = response.data
-                this.postPage = results.data.news
-            } catch(error){console.log(error.response)}
-        },
-        formatDatePage(strDate) {
-            return new Date(strDate).toLocaleDateString('ru-ru', {year:"numeric", month:"long", day:"numeric"})
-      },
-    },
-    mounted(){
-        this.fetchNewsPage()
+    setup(props){
+        const {formatDate} = useFormatDate()
+        const route = useRoute();
+        const postPage = ref([])
+        const fetchNewsPage = () => {
+            const response = axios.get('https://domotekhnika.ru/api/v1/news/' + route.params.slug)
+            .then((response) => {postPage.value = response.data.data.news})
+        }
+        onMounted(fetchNewsPage)
+        return {postPage, formatDate}
     }
-}    
-    
+}
 </script>

@@ -14,7 +14,7 @@ import NewsList from "@/components/NewsList.vue"
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
 import {useMainPage, useLoadPage} from "@/hooks/useNews"
-export default {
+export default { 
   components: {
   Layout,
   NewsList,

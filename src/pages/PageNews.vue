@@ -14,7 +14,7 @@
                     :src="postPage.image"
                     height="140"
                     width="210"
-                    />
+                    /> 
                 </div>      
                 <p class="mt-2 text-justify text-gray-700 line-clamp-4">
                 {{postPage.shortText}}

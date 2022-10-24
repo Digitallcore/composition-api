@@ -40,5 +40,5 @@ export default {
     const {formatDate} = useFormatDate()
     return {formatDate}
   }
-}
+} 
 </script>

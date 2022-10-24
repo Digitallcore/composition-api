@@ -11,7 +11,7 @@ export function useMainPage(){
          limit: limit.value
       }})
       .then ((res) =>{
-        posts.value = res.data.data.news
+        posts.value = res.data.data.news 
       })
     }
     onMounted(fetchNewsTest)

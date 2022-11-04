@@ -27,28 +27,5 @@ export default {
 </script>
 
 <style scoped>
-.tab{
-  max-width: 600px;
-  margin: 10px auto;
-}
-.tab__header{
-  list-style: none;
-  padding: 0;
-  display: flex;
-}
-.tab__header li {
-  width: 90px;
-  text-align: center;
-  padding: 10px 20px;
-  background-color: #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.4s all ease-out;
-  border: 1px solid teal;
-}
-.tab__header li.selected {
-  background-color: teal;
-  color: white;
-  margin: 0 5px 0 5px;
-}
+@import "tabs.scss";
 </style>

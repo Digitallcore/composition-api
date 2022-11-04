@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '@/pages/Main.vue'
 import PageNews from '@/pages/PageNews.vue'
+import TestPage from "@/pages/TestPage";
 const routes = [
   {
     path: '/',
@@ -10,6 +11,10 @@ const routes = [
   {
     path: '/:slug',
     component: PageNews 
+  },
+  {
+    path: "/test",
+    component: TestPage
   }
 ]
 

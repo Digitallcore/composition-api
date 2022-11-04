@@ -1,6 +1,6 @@
 <script setup>
-import Tab from "@/components/Tab";
-import TabsWrapper from "@/components/TabsWrapper";
+import Tab from "@/components/Tabs/Tab";
+import TabsWrapper from "@/components/Tabs/TabsWrapper";
 </script>
 
 <template>

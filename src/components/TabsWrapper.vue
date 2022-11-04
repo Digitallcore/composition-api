@@ -1,52 +1,54 @@
-<script setup>
-import { useSlots, ref , provide} from 'vue'
-const slots = useSlots()
-const tabTitles = ref(slots.default().map(tab => tab.props.title))
-const selectedTitle = ref(tabTitles.value[0])
-provide('selectedTitle', selectedTitle)
-</script>
-
 <template>
-  <div class="tabs">
-    <ul class="tabs__header">
-      <li
-          v-for="title in tabTitles"
+  <div class="tab">
+    <ul class="tab__header">
+      <li v-for="title in tabTitles"
           :key="title"
-          class="tabs__item"
-          :class="{ selected: selectedTitle === title}"
+          :class="{selected: title == selectedTitle}"
           @click="selectedTitle = title"
       >
-        {{ title }}
+        {{title}}
       </li>
     </ul>
-    <slot />
+    <slot/>
   </div>
 </template>
 
-<style>
-.tabs {
-  max-width: 80vw;
-  margin: 0 auto;
+<script>
+import {ref, provide} from 'vue'
+export default {
+  setup(props, {slots}) {
+    const tabTitles = ref(slots.default().map((tab)=> tab.props.title))
+    const selectedTitle = ref(tabTitles.value[0])
+
+    provide("selectedTitle", selectedTitle)
+    return {tabTitles, selectedTitle}
+  }
 }
-.tabs__header {
+</script>
+
+<style scoped>
+.tab{
+  max-width: 400px;
+  margin: 10px auto;
+}
+.tab__header{
   list-style: none;
   padding: 0;
-  margin: 0;
   display: flex;
-  justify-content: space-between;
-  gap: 5px;
 }
-.tabs__item {
-  flex: 1;
-  background-color: #eee;
-  padding: 5px 0;
-  border-radius: 5px 5px 0 0;
-  transition: .4s all ease-out;
+.tab__header li {
+  width: 90px;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #ddd;
+  border-radius: 5px;
   cursor: pointer;
-  user-select: none;
+  transition: 0.4s all ease-out;
+  border: 1px solid teal;
 }
-.tabs__item.selected {
-  background-color: #bfbfbf;
+.tab__header li.selected {
+  background-color: teal;
+  color: white;
+  margin: 0 5px 0 5px;
 }
-
 </style>

@@ -28,7 +28,7 @@ export default {
 
 <style scoped>
 .tab{
-  max-width: 400px;
+  max-width: 600px;
   margin: 10px auto;
 }
 .tab__header{

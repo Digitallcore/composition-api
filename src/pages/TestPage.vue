@@ -1,7 +1,6 @@
 <script setup>
 import Tab from "@/components/Tab";
 import TabsWrapper from "@/components/TabsWrapper";
-
 </script>
 
 <template>
